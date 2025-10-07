@@ -213,7 +213,7 @@ body {
       <div class="cover-content">
         <div class="cover-title">💕 Thiệp Mời Cưới 💕</div>
         <div class="date">28 - 04 - 2024</div>
-        <div class="names">Quốc Trường & Phương Anh</div>
+        <div class="names">VĂN ĐÔNG & HÀ THU</div>
         <div class="invite-to">Trân trọng kính mời:<br>...................................</div>
         <button class="btn-open" onclick="openCard()">💌 Bấm vào đây để mở thiệp</button>
         <!-- CÁCH 1: Nếu ảnh cùng thư mục với file HTML, đặt tên ảnh là 'couple.jpg' -->
@@ -226,11 +226,11 @@ body {
       <div class="inside-content">
         <h2>🌸 Lễ Thành Hôn 🌸</h2>
         <div style="margin-bottom:12px;">
-          Ông bà <b>Phạm Trung Dũng</b> & <b>Lê Thị Thương</b><br>
-          Ông bà <b>Phan Văn</b> & <b>Vũ Thị Như</b>
+          Ông bà <b>bùi văn đích</b> & <b>bạch thị hoà</b><br>
+          Bà con trai <b>bùi thị nghĩa</b> & <b>bùi đức khiên</b>
         </div>
         <div>Trân trọng báo tin lễ thành hôn của con chúng tôi:</div>
-        <div class="highlight">Quốc Trường & Phương Anh</div>
+        <div class="highlight">VĂN ĐÔNG & HÀ THU</div>
         <div>Hôn lễ được cử hành tại tư gia<br><b>09h00, ngày 25/10/2024</b></div>
         <hr class="divider">
         <h2>🎉 Tiệc Cưới 🎉</h2>
