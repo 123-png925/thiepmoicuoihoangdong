@@ -235,9 +235,9 @@ body {
         <hr class="divider">
         <h2>🎉 Tiệc Cưới 🎉</h2>
         <div>Trân trọng kính mời đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại:</div>
-        <div class="highlight">Hội Trường Esto<br>132 Hùng Vương, Tân Hưng, Quận 7, HCM</div>
+        <div class="highlight">xóm chỉ ngoài<br>xã nật sơn,tỉnh phú thọ</div>
         <div>Vào lúc: <b>09h00, Thứ Sáu 25/10/2024</b></div>
-        <div>Đón khách: 11h00 • Khai tiệc: 12h00</div>
+        <div>Đón khách: 16h00 • Khai tiệc: 16h30</div>
         <hr class="divider">
         <h2>🎁 Chuyển khoản mừng cưới 🎁</h2>
         <div style="margin-bottom:10px; font-size:14px;">Quét mã QR bên dưới để chuyển khoản nhanh:</div>
