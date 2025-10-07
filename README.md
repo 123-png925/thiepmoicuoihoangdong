@@ -212,7 +212,7 @@ body {
     <div class="cover" id="coverSection">
       <div class="cover-content">
         <div class="cover-title">💕 Thiệp Mời Cưới 💕</div>
-        <div class="date">28 - 04 - 2024</div>
+        <div class="date">24 - 11 - 2025</div>
         <div class="names">VĂN ĐÔNG & HÀ THU</div>
         <div class="invite-to">Trân trọng kính mời:<br>...................................</div>
         <button class="btn-open" onclick="openCard()">💌 Bấm vào đây để mở thiệp</button>
@@ -231,11 +231,11 @@ body {
         </div>
         <div>lễ thành hôn của con chúng tôi:</div>
         <div class="highlight">VĂN ĐÔNG & HÀ THU</div>
-        <div>Hôn lễ được cử hành tại tư gia đình chúng tôi<br><b>09h00, ngày 25/10/2024</b></div>
+        <div>Hôn lễ được cử hành tại tư gia đình chúng tôi<br><b>>16h00, ngày 24/11/2025</b></div>
         <hr class="divider">
         <h2>🎉 Tiệc Cưới 🎉</h2>
         <div>Trân trọng kính mời đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại:</div>
-        <div class="highlight">xóm chỉ ngoài<br>xã nật sơn,tỉnh phú thọ</div>
+        <div class="highlight">Xóm Chỉ Ngoài<br>Xã Nật Sơn,Tỉnh Phú Thọ</div>
         <div>Vào lúc: <b>16h00, Thứ Sáu 24/11/2025</b></div>
         <div>Đón khách: 16h00 • Khai tiệc: 16h30</div>
         <hr class="divider">
