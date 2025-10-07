@@ -227,16 +227,16 @@ body {
         <h2>🌸 Lễ Thành Hôn 🌸</h2>
         <div style="margin-bottom:12px;">
           Ông bà <b>bùi văn đích</b> & <b>bạch thị hoà</b><br>
-          Bà con trai <b>bùi thị nghĩa</b> & <b>bùi đức khiên</b>
+          Bà <b>bùi thị nghĩa</b>
         </div>
-        <div>Trân trọng báo tin lễ thành hôn của con chúng tôi:</div>
+        <div>lễ thành hôn của con chúng tôi:</div>
         <div class="highlight">VĂN ĐÔNG & HÀ THU</div>
-        <div>Hôn lễ được cử hành tại tư gia<br><b>09h00, ngày 25/10/2024</b></div>
+        <div>Hôn lễ được cử hành tại tư gia đình chúng tôi<br><b>09h00, ngày 25/10/2024</b></div>
         <hr class="divider">
         <h2>🎉 Tiệc Cưới 🎉</h2>
         <div>Trân trọng kính mời đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại:</div>
         <div class="highlight">xóm chỉ ngoài<br>xã nật sơn,tỉnh phú thọ</div>
-        <div>Vào lúc: <b>09h00, Thứ Sáu 25/10/2024</b></div>
+        <div>Vào lúc: <b>16h00, Thứ Sáu 24/11/2025</b></div>
         <div>Đón khách: 16h00 • Khai tiệc: 16h30</div>
         <hr class="divider">
         <h2>🎁 Chuyển khoản mừng cưới 🎁</h2>
