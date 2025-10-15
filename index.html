@@ -486,12 +486,34 @@ function createPersonalizedCard() {
     return;
   }
   
+  // Ghi nhận thông tin người dùng cho admin
+  recordUserVisit(guestName);
+  
   // Hiển thị tên trên thiệp
   document.getElementById("guestNameDisplay").textContent = guestName;
   
   // Ẩn phần nhập tên và hiển thị thiệp
   document.querySelector(".name-input-section").style.display = "none";
   document.getElementById("cardSection").style.display = "flex";
+}
+
+// Function to record user visit for admin tracking
+function recordUserVisit(userName) {
+  const visitData = {
+    name: userName,
+    timestamp: new Date().toISOString(),
+    ip: 'Unknown', // In real application, this would be obtained from server
+    browser: navigator.userAgent.split(')')[0] + ')'
+  };
+  
+  // Get existing visitors data
+  let visitors = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
+  
+  // Add new visitor
+  visitors.push(visitData);
+  
+  // Save back to localStorage
+  localStorage.setItem('websiteVisitors', JSON.stringify(visitors));
 }
 
 function openCard() {
