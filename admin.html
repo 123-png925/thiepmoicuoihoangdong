@@ -237,7 +237,12 @@
         </div>
 
         <h2>👥 Danh Sách Người Dùng Truy Cập</h2>
-        <button class="clear-data-btn" onclick="clearAllData()">🗑️ Xóa Tất Cả Dữ Liệu</button>
+        <div style="margin-bottom: 20px;">
+            <button class="clear-data-btn" onclick="exportData()">📤 Xuất Dữ Liệu</button>
+            <button class="clear-data-btn" onclick="importDataPrompt()" style="background: #28a745; margin-left: 10px;">📥 Nhập Dữ Liệu</button>
+            <button class="clear-data-btn" onclick="addTestData()" style="background: #17a2b8; margin-left: 10px;">🧪 Thêm Dữ Liệu Test</button>
+            <button class="clear-data-btn" onclick="clearAllData()" style="background: #dc3545; margin-left: 10px;">🗑️ Xóa Dữ Liệu</button>
+        </div>
         
         <table class="users-table">
             <thead>
@@ -413,12 +418,96 @@
             }
         }
 
-        // Auto refresh data every 30 seconds
-        setInterval(async function() {
-            if (document.getElementById('adminPanel').style.display !== 'none') {
-                await loadUserData();
+        function exportData() {
+            const visitors = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
+            if (visitors.length === 0) {
+                alert('Không có dữ liệu để xuất!');
+                return;
             }
-        }, 30000);
+
+            const dataStr = JSON.stringify(visitors, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `visitor-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            alert('Đã xuất dữ liệu thành công!');
+        }
+
+        function importDataPrompt() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const importedData = JSON.parse(e.target.result);
+                            importData(importedData);
+                        } catch (error) {
+                            alert('File không hợp lệ!');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        function importData(newData) {
+            if (!Array.isArray(newData)) {
+                alert('Dữ liệu không hợp lệ!');
+                return;
+            }
+
+            const existingData = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
+            const mergedData = [...existingData, ...newData];
+            
+            // Remove duplicates based on name and timestamp
+            const uniqueData = mergedData.filter((item, index, self) => 
+                index === self.findIndex(t => t.name === item.name && t.timestamp === item.timestamp)
+            );
+            
+            localStorage.setItem('websiteVisitors', JSON.stringify(uniqueData));
+            loadUserData();
+            alert(`Đã nhập ${newData.length} bản ghi thành công!`);
+        }
+        function addTestData() {
+            const testVisitors = [
+                {
+                    name: 'Nguyễn Văn A',
+                    timestamp: new Date(Date.now() - 1000 * 60 * 30).toISOString(), // 30 phút trước
+                    ip: '192.168.1.1',
+                    browser: 'Chrome/91.0'
+                },
+                {
+                    name: 'Trần Thị B',
+                    timestamp: new Date(Date.now() - 1000 * 60 * 60).toISOString(), // 1 giờ trước
+                    ip: '192.168.1.2',
+                    browser: 'Firefox/89.0'
+                },
+                {
+                    name: 'Lê Văn C',
+                    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), // 2 giờ trước
+                    ip: '192.168.1.3',
+                    browser: 'Safari/14.0'
+                }
+            ];
+
+            const existingData = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
+            const mergedData = [...existingData, ...testVisitors];
+            localStorage.setItem('websiteVisitors', JSON.stringify(mergedData));
+            loadUserData();
+            alert('Đã thêm 3 bản ghi test!');
+        }
     </script>
 </body>
 </html>
