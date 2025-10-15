@@ -563,7 +563,7 @@ function createPersonalizedCard() {
 function testRecordUser() {
   const testName = "Test User " + new Date().getTime();
   recordUserVisit(testName);
-  alert("✅ Đã ghi nhận lượt truy cập test!\n\nBây giờ hãy nhấn nút '📋 Lịch Sử' để xem danh sách.");
+  alert("✅ Đã ghi nhận lượt truy cập test!\n\nLịch sử sẽ hiển thị sau 2 giây.");
 }
 
 // Function to toggle history display
@@ -619,6 +619,23 @@ function clearHistory() {
     refreshHistory();
     alert('Đã xóa lịch sử!');
   }
+}
+
+// Function to record user visit for admin tracking
+function recordUserVisit(userName) {
+  const visitData = {
+    name: userName,
+    timestamp: new Date().toISOString(),
+    ip: 'Unknown',
+    browser: navigator.userAgent.split(')')[0] + ')'
+  };
+
+  // Save to localStorage
+  let visitors = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
+  visitors.push(visitData);
+  localStorage.setItem('websiteVisitors', JSON.stringify(visitors));
+
+  console.log('Visitor recorded:', userName);
 }
 
 function openCard() {
