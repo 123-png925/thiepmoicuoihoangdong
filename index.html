@@ -390,6 +390,7 @@ body {
     
     
     <button onclick="createPersonalizedCard()">Tạo Thiệp Mời</button>
+    <button onclick="testRecordUser()" style="margin-left: 10px; background: #17a2b8; color: white; border: none; padding: 15px 20px; border-radius: 25px; font-size: 16px; cursor: pointer;">🧪 Test Ghi Nhận</button>
   </div>
 </div>
 <div class="card-outer" id="cardSection" style="display: none;">
@@ -495,6 +496,13 @@ function createPersonalizedCard() {
   // Ẩn phần nhập tên và hiển thị thiệp
   document.querySelector(".name-input-section").style.display = "none";
   document.getElementById("cardSection").style.display = "flex";
+}
+
+// Function to test user recording
+function testRecordUser() {
+  const testName = "Test User " + new Date().getTime();
+  recordUserVisit(testName);
+  alert("✅ Đã ghi nhận lượt truy cập test!\n\nBây giờ hãy:\n1. Mở trang admin\n2. Đăng nhập\n3. Kiểm tra bảng danh sách");
 }
 
 // Function to record user visit for admin tracking
