@@ -498,22 +498,43 @@ function createPersonalizedCard() {
 }
 
 // Function to record user visit for admin tracking
-function recordUserVisit(userName) {
+async function recordUserVisit(userName) {
   const visitData = {
     name: userName,
     timestamp: new Date().toISOString(),
     ip: 'Unknown', // In real application, this would be obtained from server
     browser: navigator.userAgent.split(')')[0] + ')'
   };
-  
-  // Get existing visitors data
+
+  // Save to localStorage (backup)
   let visitors = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
-  
-  // Add new visitor
   visitors.push(visitData);
-  
-  // Save back to localStorage
   localStorage.setItem('websiteVisitors', JSON.stringify(visitors));
+
+  // Try to save to Firebase if available
+  try {
+    // Import Firebase modules dynamically
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js');
+    const { getFirestore, collection, addDoc } = await import('https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js');
+
+    // Firebase configuration (same as admin panel)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDdemo-key-for-demo-purposes",
+      authDomain: "your-project.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abcdef123456"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Save to Firebase
+    await addDoc(collection(db, 'visitors'), visitData);
+  } catch (error) {
+    console.log('Firebase not available, using localStorage only');
+  }
 }
 
 function openCard() {

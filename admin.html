@@ -255,8 +255,26 @@
         </table>
     </div>
 
-    <script>
-        // Admin credentials (trong thực tế nên lưu trên server)
+    <script type="module">
+        // Firebase configuration
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, limit } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+        
+        // Your Firebase configuration (replace with your own)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDdemo-key-for-demo-purposes",
+            authDomain: "your-project.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        // Admin credentials
         const ADMIN_CREDENTIALS = {
             username: 'hoangdong',
             password: 'admin2025'
@@ -286,10 +304,10 @@
             }
         });
 
-        function showAdminPanel() {
+        async function showAdminPanel() {
             document.getElementById('loginContainer').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
-            loadUserData();
+            await loadUserData();
         }
 
         function logout() {
@@ -300,7 +318,51 @@
             document.getElementById('password').value = '';
         }
 
-        function loadUserData() {
+        async function loadUserData() {
+            try {
+                const visitorsQuery = query(collection(db, 'visitors'), orderBy('timestamp', 'desc'));
+                const querySnapshot = await getDocs(visitorsQuery);
+                const visitors = [];
+                
+                querySnapshot.forEach((doc) => {
+                    visitors.push({ id: doc.id, ...doc.data() });
+                });
+                
+                const today = new Date().toDateString();
+                
+                // Calculate statistics
+                const totalVisitors = visitors.length;
+                const uniqueUsers = [...new Set(visitors.map(v => v.name))].length;
+                const todayVisitors = visitors.filter(v => new Date(v.timestamp).toDateString() === today).length;
+                
+                // Update stats
+                document.getElementById('totalVisitors').textContent = totalVisitors;
+                document.getElementById('uniqueUsers').textContent = uniqueUsers;
+                document.getElementById('todayVisitors').textContent = todayVisitors;
+                
+                // Populate table
+                const tbody = document.getElementById('usersTableBody');
+                tbody.innerHTML = '';
+                
+                visitors.forEach((visitor, index) => {
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td><strong>${visitor.name}</strong></td>
+                        <td>${new Date(visitor.timestamp).toLocaleString('vi-VN')}</td>
+                        <td>${visitor.ip || 'N/A'}</td>
+                        <td>${visitor.browser || 'N/A'}</td>
+                    `;
+                });
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                // Fallback to localStorage if Firebase fails
+                loadLocalStorageData();
+            }
+        }
+
+        function loadLocalStorageData() {
             const visitors = JSON.parse(localStorage.getItem('websiteVisitors') || '[]');
             const today = new Date().toDateString();
             
@@ -330,18 +392,31 @@
             });
         }
 
-        function clearAllData() {
+        async function clearAllData() {
             if (confirm('Bạn có chắc chắn muốn xóa tất cả dữ liệu người dùng?')) {
-                localStorage.removeItem('websiteVisitors');
-                loadUserData();
-                alert('Đã xóa tất cả dữ liệu!');
+                try {
+                    const visitorsQuery = query(collection(db, 'visitors'));
+                    const querySnapshot = await getDocs(visitorsQuery);
+                    
+                    const deletePromises = [];
+                    querySnapshot.forEach((doc) => {
+                        deletePromises.push(deleteDoc(doc.ref));
+                    });
+                    
+                    await Promise.all(deletePromises);
+                    await loadUserData();
+                    alert('Đã xóa tất cả dữ liệu!');
+                } catch (error) {
+                    console.error('Error clearing data:', error);
+                    alert('Có lỗi xảy ra khi xóa dữ liệu!');
+                }
             }
         }
 
         // Auto refresh data every 30 seconds
-        setInterval(function() {
+        setInterval(async function() {
             if (document.getElementById('adminPanel').style.display !== 'none') {
-                loadUserData();
+                await loadUserData();
             }
         }, 30000);
     </script>
