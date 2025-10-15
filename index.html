@@ -1,0 +1,516 @@
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiệp Mời Đám Cưới</title>
+<style>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f7e6ee;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px 0;
+}
+.card-outer {
+  width: 100%;
+  max-width: 420px;
+  background: #d6002f;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255,204,0,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255,204,0,0.1) 0%, transparent 50%);
+  position: relative;
+  margin-top: 32px;
+  clip-path: polygon(50% 0, 100% 6%, 100% 100%, 0 100%, 0 6%);
+  box-shadow: 0 8px 32px rgba(130,38,89,0.25);
+  padding: 10px;
+}
+.card-outer::before {
+  content: '🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  opacity: 0.6;
+  color: #ffcc00;
+  pointer-events: none;
+  text-align: center;
+  letter-spacing: 10px;
+}
+.card-outer::after {
+  content: '🦅🦅🦅🦅🦅🦅🦅🦅🦅🦅';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  opacity: 0.6;
+  color: #ffcc00;
+  pointer-events: none;
+  text-align: center;
+  letter-spacing: 10px;
+}
+.card {
+  width: 100%;
+  position: relative;
+  background: #d6002f;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cover {
+  width: 100%;
+  background: #fff;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+.cover.hide {
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.cover-content {
+  width: 95%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cover-title {
+  font-size: 24px;
+  font-family: 'Segoe Script', cursive;
+  color: #d6002f;
+  margin-bottom: 12px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+.cover .date {
+  font-size: 16px;
+  color: #d6002f;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+.cover .names {
+  font-size: 18px;
+  color: #d6002f;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.cover .invite-to {
+  font-size: 15px;
+  color: #b21c5c;
+  margin-bottom: 15px;
+  text-align: center;
+}
+#guestNameDisplay {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 8px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.btn-open {
+  margin: 20px 0;
+  padding: 12px 30px;
+  background: #b21c5c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(178,28,92,0.3);
+  transition: all 0.3s;
+}
+.btn-open:hover {
+  background: #d6002f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(178,28,92,0.4);
+}
+.cover-photo {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(130,38,89,0.15);
+  object-fit: cover;
+}
+.inside {
+  width: 100%;
+  background: #fff;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+.inside.show {
+  max-height: 5000px;
+  opacity: 1;
+  padding: 20px 10px;
+}
+.inside-content {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+}
+.contact-info-header {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.3;
+  z-index: 100;
+}
+.contact-info-header-cover {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.3;
+  z-index: 100;
+}
+.facebook-info {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f0f8ff;
+  border-radius: 8px;
+  border: 1px solid #d6002f;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+.name-input-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7e6ee 0%, #d6002f 100%);
+  padding: 20px;
+}
+.input-container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(214, 0, 47, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+.input-container h3 {
+  color: #d6002f;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+.input-container p {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.input-container input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #d6002f;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.input-container input:focus {
+  outline: none;
+  border-color: #b21c5c;
+  box-shadow: 0 0 10px rgba(214, 0, 47, 0.3);
+}
+.input-container button {
+  background: #d6002f;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(214, 0, 47, 0.3);
+}
+.input-container button:hover {
+  background: #b21c5c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(214, 0, 47, 0.4);
+}
+.photo-upload-section {
+  margin: 20px 0;
+}
+.photo-label {
+  display: block;
+  color: #d6002f;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.photo-upload-section input[type="file"] {
+  display: none;
+}
+.photo-preview {
+  width: 200px;
+  height: 150px;
+  border: 2px dashed #d6002f;
+  border-radius: 10px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.photo-preview:hover {
+  border-color: #b21c5c;
+  background: rgba(214, 0, 47, 0.05);
+}
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.upload-text {
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+.inside h2 {
+  font-size: 20px;
+  color: #d6002f;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+.inside .highlight {
+  font-weight: bold;
+  color: #b21c5c;
+  font-size: 18px;
+  margin: 12px 0;
+  text-align: center;
+}
+.inside p, .inside div {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  color: #333;
+}
+.divider {
+  width: 60%;
+  margin: 20px auto;
+  border: 0;
+  border-top: 2px solid #d6002f;
+}
+.qr-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  border: 2px solid #d6002f;
+  box-shadow: 0 4px 12px rgba(130,38,89,0.2);
+  margin: 15px auto 10px auto;
+  display: block;
+}
+.bank-info {
+  margin-top: 10px;
+  padding: 15px;
+  background: #fff6fa;
+  border-radius: 8px;
+  border: 1px solid #f3c6d2;
+  font-size: 14px;
+  line-height: 1.8;
+}
+@media (max-width: 600px) {
+  .card-outer {
+    max-width: 95vw;
+    margin-top: 10px;
+  }
+  .cover-title {
+    font-size: 20px;
+  }
+  .cover .names {
+    font-size: 16px;
+  }
+  .btn-open {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .inside h2 {
+    font-size: 18px;
+  }
+  .inside .highlight {
+    font-size: 16px;
+  }
+  .qr-image {
+    width: 180px;
+    height: 180px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="name-input-section">
+  <div class="input-container">
+    <h3>🎊 Thiệp Mời Cưới Cá Nhân Hóa 🎊</h3>
+    <p>Nhập tên của bạn để tạo thiệp mời cá nhân hóa:</p>
+    <input type="text" id="guestName" placeholder="Nhập tên của bạn..." maxlength="50">
+    
+    
+    <button onclick="createPersonalizedCard()">Tạo Thiệp Mời</button>
+  </div>
+</div>
+<div class="card-outer" id="cardSection" style="display: none;">
+  <div class="contact-info-header-cover">
+    HOÀNG ĐÔNG<br>
+    SĐT: 0333432908
+  </div>
+  <div class="card" id="weddingCard">
+    <div class="cover" id="coverSection">
+      <div class="cover-content">
+        <div class="cover-title">💕 Thiệp Mời Cưới 💕</div>
+        <div class="date">24 - 11 - 2025</div>
+        <div class="names">VĂN ĐÔNG & HÀ THU</div>
+        <div class="invite-to">Trân trọng kính mời:<br><span id="guestNameDisplay">...................................</span></div>
+        <button class="btn-open" onclick="openCard()">💌 Bấm vào đây để mở thiệp</button>
+        <!-- CÁCH 1: Nếu ảnh cùng thư mục với file HTML, đặt tên ảnh là 'couple.jpg' -->
+        <img src="couple.jpg.JPG" alt="Cô dâu chú rể" class="cover-photo" onerror="this.src='https://via.placeholder.com/300x400/d6002f/ffffff?text=Co+Dau+Chu+Re'">
+        <!-- CÁCH 2: Hoặc upload ảnh lên imgur.com rồi thay link vào đây -->
+        <!-- <img src="https://i.imgur.com/YOUR_IMAGE_ID.jpg" alt="Cô dâu chú rể" class="cover-photo"> -->
+      </div>
+    </div>
+    <div class="inside" id="insideSection">
+      <div class="contact-info-header">
+        HOÀNG ĐÔNG<br>
+        SĐT: 0333432908
+      </div>
+      <div class="inside-content">
+        <div style="background: #d6002f; height: 8px; width: calc(100% + 170px); margin: 50px -85px 20px -85px; border-radius: 4px;"></div>
+        <h2>🌸 Lễ Thành Hôn 🌸</h2>
+        <div style="margin-bottom:12px;">
+          Ông bà <b>bùi văn đích</b> & <b>bạch thị hoà</b><br>
+          Bà <b>bùi thị nghĩa</b>
+        </div>
+        <div>lễ thành hôn của con chúng tôi:</div>
+        <div class="highlight">VĂN ĐÔNG & HÀ THU</div>
+        <div>Hôn lễ được cử hành tại tư gia đình chúng tôi<br><b>>16h00, ngày 24/11/2025</b></div>
+        <hr class="divider">
+        <h2>🎉 Tiệc Cưới 🎉</h2>
+        <div>Trân trọng kính mời đến dự buổi tiệc chung vui cùng gia đình chúng tôi tại:</div>
+        <div class="highlight">Xóm Chỉ Ngoài<br>Xã Nật Sơn,Tỉnh Phú Thọ</div>
+        <div>Vào lúc: <b>16h00, Thứ Sáu 24/11/2025</b></div>
+        <div>Đón khách: 16h00 • Khai tiệc: 16h30</div>
+        <div style="margin-top: 8px; font-size: 14px; color: #666;">Địa chỉ nhà gái: Xóm Bờ Nè, Xã Nật Sơn, Tỉnh Phú Thọ</div>
+        <hr class="divider">
+        <h2>🎁 Chuyển khoản mừng cưới 🎁</h2>
+        <div style="margin-bottom:10px; font-size:14px;">Quét mã QR bên dưới để chuyển khoản nhanh:</div>
+        <img src="https://img.vietqr.io/image/VCB-1048034865-compact.png" alt="QR chuyển khoản" style="width: calc(100% + 30px); height: auto; margin: 15px -15px 10px -15px; display: block; border-radius: 12px; border: 2px solid #d6002f; box-shadow: 0 4px 12px rgba(130,38,89,0.2);">
+        <div style="text-align: center; font-size: 13px; color: #666; margin-bottom: 15px; font-style: italic;">📱 Chụp ảnh để quét mã QR</div>
+        <div class="bank-info">
+          <b>Ngân hàng:</b> Vietcombank<br>
+          <b>Số tài khoản:</b> 1048034865<br>
+          <b>Chủ tài khoản:</b> BUI VAN DONG
+        </div>
+        <hr class="divider">
+        <h2>🗺️ Bản Đồ Đường Đi 🗺️</h2>
+        <div style="margin-bottom:15px; font-size:14px;">Nhấn vào bản đồ để mở Google Maps và xem đường đi: nhà chú rể <b>Văn Đông </b></div>
+        <div style="position: relative; width: 100%; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(130,38,89,0.2); margin: 15px 0; border: 2px solid #d6002f;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5!2d105.5433174!3d20.7619969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQ1JzQzLjIiTiAxMDXCsDMyJzM1LjkiRQ!5e0!3m2!1svi!2s!4v1234567890"
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div style="font-size:13px; color:#666; text-align:center; margin-bottom:10px;">
+          📍 <b>Địa chỉ:</b> Xóm Chỉ Ngoài, Xã Nật Sơn, Tỉnh Phú Thọ
+        </div>
+        <div style="text-align:center; margin-top:10px;">
+          <a href="https://www.google.com/maps/search/?api=1&query=20.7619969,105.5433174" target="_blank" style="display:inline-block; padding:10px 20px; background:#b21c5c; color:white; text-decoration:none; border-radius:20px; font-size:14px; box-shadow: 0 4px 12px rgba(178,28,92,0.3);">
+            🧭 Mở trong Google Maps
+          </a>
+        </div>
+        <div class="facebook-info">
+          📘 <b>Facebook:</b> hoàng đông
+        </div>
+        <div style="position: relative; margin-top: 15px;">
+          <div style="position: absolute; left: 0; bottom: 0; font-size: 30px; opacity: 0.7; color: #d6002f;">🐉</div>
+          <div style="position: absolute; right: 0; bottom: 0; font-size: 30px; opacity: 0.7; color: #d6002f;">🦅</div>
+          <div style="height: 40px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function createPersonalizedCard() {
+  const guestName = document.getElementById("guestName").value.trim();
+  
+  if (guestName === "") {
+    alert("Vui lòng nhập tên của bạn!");
+    return;
+  }
+  
+  // Hiển thị tên trên thiệp
+  document.getElementById("guestNameDisplay").textContent = guestName;
+  
+  // Ẩn phần nhập tên và hiển thị thiệp
+  document.querySelector(".name-input-section").style.display = "none";
+  document.getElementById("cardSection").style.display = "flex";
+}
+
+function openCard() {
+  const coverSection = document.getElementById("coverSection");
+  const insideSection = document.getElementById("insideSection");
+  
+  coverSection.classList.add("hide");
+  insideSection.classList.add("show");
+}
+
+// Cho phép nhấn Enter để tạo thiệp
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("guestName").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      createPersonalizedCard();
+    }
+  });
+  
+});
+</script>
+</body>
+</html>
