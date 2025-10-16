@@ -144,7 +144,7 @@ body {
 }
 .cover-photo {
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   border-radius: 8px;
   margin-top: 15px;
   box-shadow: 0 4px 12px rgba(130,38,89,0.15);
@@ -160,7 +160,7 @@ body {
   transition: all 0.8s ease;
 }
 .inside.show {
-  max-height: 5000px;
+  max-height: 4000px;
   opacity: 1;
   padding: 20px 10px;
 }
@@ -170,7 +170,7 @@ body {
   margin: 0 auto;
   background: #fff;
   border-radius: 6px;
-  padding: 15px;
+  padding: 12px;
   text-align: center;
   position: relative;
 }
@@ -330,14 +330,14 @@ body {
   color: #333;
 }
 .divider {
-  width: 60%;
-  margin: 20px auto;
+  width: 50%;
+  margin: 15px auto;
   border: 0;
   border-top: 2px solid #d6002f;
 }
 .qr-image {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   border-radius: 12px;
   border: 2px solid #d6002f;
   box-shadow: 0 4px 12px rgba(130,38,89,0.2);
@@ -353,35 +353,63 @@ body {
   font-size: 14px;
   line-height: 1.8;
 }
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .card-outer {
-    max-width: 95vw;
-    margin-top: 10px;
+    max-width: 100vw;
+    margin: 10px;
+    padding: 5px;
   }
   .cover-title {
-    font-size: 20px;
-  }
-  .cover .names {
-    font-size: 16px;
-  }
-  .btn-open {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  .inside h2 {
     font-size: 18px;
   }
-  .inside .highlight {
+  .cover .names {
+    font-size: 14px;
+  }
+  .btn-open {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  .inside h2 {
     font-size: 16px;
   }
   .qr-image {
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
+  }
+  .cover-photo {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-outer {
+    max-width: 90vw;
+  }
+  .cover-photo {
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-outer {
+    max-width: 80vw;
+  }
+  .inside .highlight {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .card-outer {
+    max-width: 70vw;
+  }
+  body {
+    padding: 40px 0;
   }
 }
 .history-section {
-  width: 100%;
-  margin: 20px auto;
+  width: 80%;
+  margin: 20px 50px 20px auto;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   padding: 25px;
@@ -395,11 +423,17 @@ body {
 }
 .history-controls {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .history-list {
   max-height: 200px;
   overflow-y: auto;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
 }
 .history-item {
   background: rgba(214, 0, 47, 0.1);
@@ -463,7 +497,7 @@ body {
         SĐT: 0333432908
       </div>
       <div class="inside-content">
-        <div style="background: #d6002f; height: 8px; width: calc(100% + 170px); margin: 50px -85px 20px -85px; border-radius: 4px;"></div>
+        <div style="background: #d6002f; height: 8px; width: calc(100% + 170px); margin: 40px -85px 20px -85px; border-radius: 4px;"></div>
         <h2>🌸 Lễ Thành Hôn 🌸</h2>
         <div style="margin-bottom:12px;">
           Ông bà <b>bùi văn đích</b> & <b>bạch thị hoà</b><br>
@@ -482,7 +516,7 @@ body {
         <hr class="divider">
         <h2>🗺️ Bản Đồ Đường Đi 🗺️</h2>
         <div style="margin-bottom:15px; font-size:14px; text-align:center;">Nhấn vào bản đồ để mở Google Maps và xem đường đi: nhà chú rể <b>Văn Đông </b></div>
-        <div style="position: relative; width: 100%; height: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(130,38,89,0.2); margin: 15px 0; border: 2px solid #d6002f;">
+        <div style="position: relative; width: 100%; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(130,38,89,0.2); margin: 15px 50px 15px auto; border: 2px solid #d6002f;">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5!2d105.5433174!3d20.7619969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQ1JzQzLjIiTiAxMDXCsDMyJzM1LjkiRQ!5e0!3m2!1svi!2s!4v1234567890"
             width="100%" 
@@ -504,7 +538,7 @@ body {
         <hr class="divider">
         <h2>🎁 Chuyển khoản mừng cưới 🎁</h2>
         <div style="margin-bottom:10px; font-size:14px; text-align:center;">Quét mã QR bên dưới để chuyển khoản nhanh:</div>
-        <img src="https://img.vietqr.io/image/VCB-1048034865-compact.png" alt="QR chuyển khoản" style="width: 75%; height: auto; margin: 15px auto 10px auto; display: block; border-radius: 12px; border: 2px solid #d6002f; box-shadow: 0 4px 12px rgba(130,38,89,0.2);">
+        <img src="https://img.vietqr.io/image/VCB-1048034865-compact.png" alt="QR chuyển khoản" style="width: 65%; height: auto; margin: 15px auto 10px auto; display: block; border-radius: 12px; border: 2px solid #d6002f; box-shadow: 0 4px 12px rgba(130,38,89,0.2);">
         <div style="text-align: center; font-size: 13px; color: #666; margin-bottom: 15px; font-style: italic;">📱 Chụp ảnh để quét mã QR</div>
         <div class="bank-info">
           <b>Ngân hàng:</b> Vietcombank<br>
