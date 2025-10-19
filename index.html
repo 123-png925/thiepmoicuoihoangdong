@@ -144,11 +144,14 @@ body {
 }
 .cover-photo {
   width: 100%;
-  max-width: 250px;
+  max-width: 280px;
+  height: 350px;
+  object-fit: contain;
+  background: #fff;
   border-radius: 8px;
   margin-top: 15px;
   box-shadow: 0 4px 12px rgba(130,38,89,0.15);
-  object-fit: cover;
+  border: 2px solid #f3c6d2;
 }
 .inside {
   width: 100%;
@@ -378,6 +381,7 @@ body {
   }
   .cover-photo {
     max-width: 200px;
+    height: 280px;
   }
 }
 
@@ -464,22 +468,26 @@ body {
 }
 .gallery-item {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: 180px;
+  object-fit: contain;
+  background: #fff;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid #f3c6d2;
 }
 .gallery-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 .main-photo {
-  height: 200px;
+  height: 250px;
   grid-column: 1 / -1;
   border: 3px solid #d6002f;
   box-shadow: 0 4px 16px rgba(214, 0, 47, 0.3);
+  object-fit: contain;
+  background: #fff;
 }
 @media (max-width: 768px) {
   .gallery-container {
@@ -487,10 +495,10 @@ body {
     gap: 10px;
   }
   .main-photo {
-    height: 180px;
+    height: 200px;
   }
   .gallery-item {
-    height: 120px;
+    height: 140px;
   }
 }
 @media (max-width: 480px) {
@@ -499,10 +507,10 @@ body {
     gap: 8px;
   }
   .main-photo {
-    height: 150px;
+    height: 180px;
   }
   .gallery-item {
-    height: 100px;
+    height: 120px;
   }
 }
 </style>
@@ -595,20 +603,20 @@ body {
         <h2>📸 Album Ảnh Cưới 📸</h2>
         <div class="photo-gallery">
           <div class="gallery-container">
-            <img src="couple.jpg" alt="Ảnh cưới chính" class="gallery-item main-photo">
-            <img src="images/z7133793406114_7ad5b74cb365bae99a2997af4ed018aa.jpg" alt="Ảnh cưới 1" class="gallery-item">
-            <img src="images/z7133793464663_2addd397f096a3ebcad67a75aaf317d6.jpg" alt="Ảnh cưới 2" class="gallery-item">
-            <img src="images/z7133793581036_79c5f0e0951aba31686059f8df1eaf2c.jpg" alt="Ảnh cưới 3" class="gallery-item">
-            <img src="images/z7133793664964_ab5c8af309a4bfee815ce046771458d2.jpg" alt="Ảnh cưới 4" class="gallery-item">
-            <img src="images/z7133793758737_38df98c8a7c1c67906245c1ece848bff.jpg" alt="Ảnh cưới 5" class="gallery-item">
-            <img src="images/z7133793946359_1e725758277d732e710654b3a04c45c2.jpg" alt="Ảnh cưới 6" class="gallery-item">
-            <img src="images/z7133794099517_a9342ac064340bf6e4afa7a854527e6d.jpg" alt="Ảnh cưới 7" class="gallery-item">
-            <img src="images/z7133794208282_e1a6bc5ca75c03c7d815db263901b6cf.jpg" alt="Ảnh cưới 8" class="gallery-item">
-            <img src="images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg" alt="Ảnh cưới 9" class="gallery-item">
-            <img src="images/z7133794492327_0c5ff35ba0e62ed46291e1535fb2407f.jpg" alt="Ảnh cưới 10" class="gallery-item">
-            <img src="images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg" alt="Ảnh cưới 11" class="gallery-item">
-            <img src="images/z7133801548978_cd5e4ef3257ad85b6599e55ea304c1e5.jpg" alt="Ảnh cưới 12" class="gallery-item">
-            <img src="images/z7133801650064_5c596063a1083651afcfa874a84ad7a2.jpg" alt="Ảnh cưới 13" class="gallery-item">
+            <img src="couple.jpg" alt="Ảnh cưới chính" class="gallery-item main-photo" onclick="openImageModal('couple.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133793406114_7ad5b74cb365bae99a2997af4ed018aa.jpg" alt="Ảnh cưới 1" class="gallery-item" onclick="openImageModal('images/z7133793406114_7ad5b74cb365bae99a2997af4ed018aa.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133793464663_2addd397f096a3ebcad67a75aaf317d6.jpg" alt="Ảnh cưới 2" class="gallery-item" onclick="openImageModal('images/z7133793464663_2addd397f096a3ebcad67a75aaf317d6.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133793581036_79c5f0e0951aba31686059f8df1eaf2c.jpg" alt="Ảnh cưới 3" class="gallery-item" onclick="openImageModal('images/z7133793581036_79c5f0e0951aba31686059f8df1eaf2c.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133793664964_ab5c8af309a4bfee815ce046771458d2.jpg" alt="Ảnh cưới 4" class="gallery-item" onclick="openImageModal('images/z7133793664964_ab5c8af309a4bfee815ce046771458d2.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133793758737_38df98c8a7c1c67906245c1ece848bff.jpg" alt="Ảnh cưới 5" class="gallery-item" onclick="openImageModal('images/z7133793758737_38df98c8a7c1c67906245c1ece848bff.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133793946359_1e725758277d732e710654b3a04c45c2.jpg" alt="Ảnh cưới 6" class="gallery-item" onclick="openImageModal('images/z7133793946359_1e725758277d732e710654b3a04c45c2.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133794099517_a9342ac064340bf6e4afa7a854527e6d.jpg" alt="Ảnh cưới 7" class="gallery-item" onclick="openImageModal('images/z7133794099517_a9342ac064340bf6e4afa7a854527e6d.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133794208282_e1a6bc5ca75c03c7d815db263901b6cf.jpg" alt="Ảnh cưới 8" class="gallery-item" onclick="openImageModal('images/z7133794208282_e1a6bc5ca75c03c7d815db263901b6cf.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg" alt="Ảnh cưới 9" class="gallery-item" onclick="openImageModal('images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133794492327_0c5ff35ba0e62ed46291e1535fb2407f.jpg" alt="Ảnh cưới 10" class="gallery-item" onclick="openImageModal('images/z7133794492327_0c5ff35ba0e62ed46291e1535fb2407f.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg" alt="Ảnh cưới 11" class="gallery-item" onclick="openImageModal('images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133801548978_cd5e4ef3257ad85b6599e55ea304c1e5.jpg" alt="Ảnh cưới 12" class="gallery-item" onclick="openImageModal('images/z7133801548978_cd5e4ef3257ad85b6599e55ea304c1e5.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133801650064_5c596063a1083651afcfa874a84ad7a2.jpg" alt="Ảnh cưới 13" class="gallery-item" onclick="openImageModal('images/z7133801650064_5c596063a1083651afcfa874a84ad7a2.jpg')" style="cursor: zoom-in;">
           </div>
         </div>
         <div class="facebook-info">
@@ -668,14 +676,49 @@ function openCard() {
   insideSection.classList.add("show");
 }
 
-// Cho phép nhấn Enter để tạo thiệp
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("guestName").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-      createPersonalizedCard();
+function openImageModal(imageSrc) {
+  // Tạo modal phóng to ảnh
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: zoom-out;
+  `;
+  
+  const img = document.createElement('img');
+  img.src = imageSrc;
+  img.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  `;
+  
+  modal.appendChild(img);
+  document.body.appendChild(modal);
+  
+  // Đóng modal khi click
+  modal.onclick = function() {
+    document.body.removeChild(modal);
+  };
+  
+  // Đóng modal khi nhấn ESC
+  document.onkeydown = function(e) {
+    if (e.key === 'Escape') {
+      document.body.removeChild(modal);
+      document.onkeydown = null;
     }
-  });
-});
+  };
+}
 </script>
 </body>
 </html>
