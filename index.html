@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -449,63 +448,6 @@ body {
   border: none;
   border-radius: 10px;
 }
-.photo-gallery {
-  margin: 20px 0;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  border: 2px solid #f3c6d2;
-  box-shadow: 0 4px 12px rgba(214, 0, 47, 0.1);
-}
-.gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 15px;
-}
-.gallery-item {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-.gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
-.main-photo {
-  height: 200px;
-  grid-column: 1 / -1;
-  border: 3px solid #d6002f;
-  box-shadow: 0 4px 16px rgba(214, 0, 47, 0.3);
-}
-@media (max-width: 768px) {
-  .gallery-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-  }
-  .main-photo {
-    height: 180px;
-  }
-  .gallery-item {
-    height: 120px;
-  }
-}
-@media (max-width: 480px) {
-  .gallery-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-  .main-photo {
-    height: 150px;
-  }
-  .gallery-item {
-    height: 100px;
-  }
-}
 </style>
 </head>
 <body>
@@ -533,7 +475,7 @@ body {
         <div class="invite-to">Trân trọng kính mời:<br><span id="guestNameDisplay">...................................</span></div>
         <button class="btn-open" onclick="openCard()">💌 Bấm vào đây để mở thiệp</button>
         <!-- CÁCH 1: Nếu ảnh cùng thư mục với file HTML, đặt tên ảnh là 'couple.jpg' -->
-        <img src="couple.jpg" alt="Cô dâu chú rể" class="cover-photo" onerror="this.src='https://via.placeholder.com/300x400/d6002f/ffffff?text=Co+Dau+Chu+Re'">
+        <img src="couple.jpg.JPG" alt="Cô dâu chú rể" class="cover-photo" onerror="this.src='https://via.placeholder.com/300x400/d6002f/ffffff?text=Co+Dau+Chu+Re'">
         <!-- CÁCH 2: Hoặc upload ảnh lên imgur.com rồi thay link vào đây -->
         <!-- <img src="https://i.imgur.com/YOUR_IMAGE_ID.jpg" alt="Cô dâu chú rể" class="cover-photo"> -->
       </div>
@@ -592,26 +534,6 @@ body {
           <b>Số tài khoản:</b> 1048034865<br>
           <b>Chủ tài khoản:</b> BUI VAN DONG
         </div>
-        <hr class="divider">
-        <h2>📸 Album Ảnh Cưới 📸</h2>
-        <div class="photo-gallery">
-          <div class="gallery-container">
-            <img src="couple.jpg" alt="Ảnh cưới chính" class="gallery-item main-photo">
-            <img src="images/z7133793406114_7ad5b74cb365bae99a2997af4ed018aa.jpg" alt="Ảnh cưới 1" class="gallery-item">
-            <img src="images/z7133793464663_2addd397f096a3ebcad67a75aaf317d6.jpg" alt="Ảnh cưới 2" class="gallery-item">
-            <img src="images/z7133793581036_79c5f0e0951aba31686059f8df1eaf2c.jpg" alt="Ảnh cưới 3" class="gallery-item">
-            <img src="images/z7133793664964_ab5c8af309a4bfee815ce046771458d2.jpg" alt="Ảnh cưới 4" class="gallery-item">
-            <img src="images/z7133793758737_38df98c8a7c1c67906245c1ece848bff.jpg" alt="Ảnh cưới 5" class="gallery-item">
-            <img src="images/z7133793946359_1e725758277d732e710654b3a04c45c2.jpg" alt="Ảnh cưới 6" class="gallery-item">
-            <img src="images/z7133794099517_a9342ac064340bf6e4afa7a854527e6d.jpg" alt="Ảnh cưới 7" class="gallery-item">
-            <img src="images/z7133794208282_e1a6bc5ca75c03c7d815db263901b6cf.jpg" alt="Ảnh cưới 8" class="gallery-item">
-            <img src="images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg" alt="Ảnh cưới 9" class="gallery-item">
-            <img src="images/z7133794492327_0c5ff35ba0e62ed46291e1535fb2407f.jpg" alt="Ảnh cưới 10" class="gallery-item">
-            <img src="images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg" alt="Ảnh cưới 11" class="gallery-item">
-            <img src="images/z7133801548978_cd5e4ef3257ad85b6599e55ea304c1e5.jpg" alt="Ảnh cưới 12" class="gallery-item">
-            <img src="images/z7133801650064_5c596063a1083651afcfa874a84ad7a2.jpg" alt="Ảnh cưới 13" class="gallery-item">
-          </div>
-        </div>
         <div class="facebook-info">
           📘 <b>Facebook:</b> hoàng đông
         </div>
@@ -666,7 +588,6 @@ function openCard() {
   const insideSection = document.getElementById("insideSection");
   
   coverSection.classList.add("hide");
-  coverSection.classList.remove("show");
   insideSection.classList.add("show");
 }
 
