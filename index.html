@@ -65,7 +65,7 @@ body {
   width: 100%;
   background: #fff;
   padding: 20px 10px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   transition: all 0.5s ease;
@@ -157,14 +157,14 @@ body {
 .inside {
   width: 100%;
   background: #fff;
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+  padding: 20px 10px;
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
   transition: all 0.8s ease;
 }
 .inside.show {
-  max-height: 4000px;
+  max-height: none;
   opacity: 1;
   padding: 20px 10px;
 }
