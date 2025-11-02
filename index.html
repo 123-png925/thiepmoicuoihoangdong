@@ -639,12 +639,14 @@ body {
   </div>
 </div>
 <script>
-const TELEGRAM_BOT_TOKEN = '7960405080:AAEwl9VviSFBdbnr-E6C7hjTfTtkl5YbdGI';
-const TELEGRAM_CHAT_ID = '5247744842';
 async function sendToTelegram(name) {
-  const text = `Khách nhập tên: ${name}`;
-  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-  await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({chat_id: TELEGRAM_CHAT_ID, text})}).catch(()=>{});
+  try {
+    await fetch('/api/notify-telegram', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
+  } catch (e) {}
 }
 function createPersonalizedCard() {
   const guestName = document.getElementById("guestName").value.trim();
