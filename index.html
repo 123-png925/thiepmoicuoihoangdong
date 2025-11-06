@@ -4,17 +4,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thiệp Mời Đám Cưới</title>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Thiệp mời cưới Văn Đông & Hà Thu">
-  <meta property="og:description" content="Trân trọng kính mời bạn dự lễ thành hôn của chúng tôi.">
   <meta property="og:url" content="https://thiepmoicuoidong.netlify.app/">
-  <meta property="og:image" content="https://thiepmoicuoidong.netlify.app/images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg">
+  <meta property="og:title" content="Thiệp mời cưới Văn Đông & Hà Thu">
+  <meta property="og:description" content="Trân trọng kính mời bạn đến dự lễ thành hôn của chúng tôi vào lúc 16h00 ngày 24/11/2025">
+  
+  <!-- Thay đổi đường dẫn ảnh sang sử dụng ảnh từ thư mục gốc -->
+  <meta property="og:image" content="https://thiepmoicuoidong.netlify.app/couple.jpg?v=4">
+  <meta property="og:image:secure_url" content="https://thiepmoicuoidong.netlify.app/couple.jpg?v=4">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="Thiệp mời cưới Văn Đông & Hà Thu">
+  <meta property="og:image:type" content="image/jpeg">
+  
+  <meta property="og:site_name" content="Thiệp mời cưới Văn Đông & Hà Thu">
+  <meta property="og:locale" content="vi_VN">
+  
+  <!-- Facebook App ID (nếu có) -->
+  <!-- <meta property="fb:app_id" content="YOUR_APP_ID"> -->
+  
+  <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Thiệp mời cưới Văn Đông & Hà Thu">
-  <meta name="twitter:description" content="Trân trọng kính mời bạn dự lễ thành hôn của chúng tôi.">
-  <meta name="twitter:image" content="https://thiepmoicuoidong.netlify.app/images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg">
+  <meta name="twitter:description" content="Trân trọng kính mời bạn đến dự lễ thành hôn của chúng tôi vào lúc 16h00 ngày 24/11/2025">
+  <meta name="twitter:image" content="https://thiepmoicuoidong.netlify.app/couple.jpg?v=4">
+  <meta name="twitter:image:alt" content="Thiệp mời cưới Văn Đông & Hà Thu">
+  
+  <!-- Additional Meta Tags -->
+  <meta name="author" content="Văn Đông & Hà Thu">
+  <meta name="description" content="Thiệp mời cưới trực tuyến của Văn Đông & Hà Thu. Hân hạnh được đón tiếp bạn vào ngày 24/11/2025.">
+  
+  <!-- Xác thực quyền sở hữu trang web với Facebook -->
+  <meta property="fb:admins" content="YOUR_FACEBOOK_ID">
+  
+  <!-- Đảm bảo không bị cache -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <style>
+/* Countdown Styles - Removed as we're using inline styles */
+
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f7e6ee;
@@ -575,11 +603,38 @@ body {
         <div style="font-size:13px; color:#666; text-align:center; margin-bottom:10px;">
           📍 <b>Địa chỉ:</b> Xóm Chỉ Ngoài, Xã Nật Sơn, Tỉnh Phú Thọ
         </div>
-        <div style="text-align:center; margin-top:10px;">
-          <a href="https://www.google.com/maps/search/?api=1&query=20.7619969,105.5433174" target="_blank" style="display:inline-block; padding:10px 20px; background:#b21c5c; color:white; text-decoration:none; border-radius:20px; font-size:14px; box-shadow: 0 4px 12px rgba(178,28,92,0.3);">
+        <div style="text-align:center; margin:20px 0 10px;">
+          <a href="https://www.google.com/maps/search/?api=1&query=20.7619969,105.5433174" target="_blank" style="display:inline-block; padding:10px 20px; background:#1e88e5; color:white; text-decoration:none; border-radius:20px; font-size:14px; box-shadow: 0 4px 12px rgba(30,136,229,0.3); transition: all 0.3s ease;">
             🧭 Mở trong Google Maps
           </a>
         </div>
+        
+        <div style="margin: 30px 0;">
+          <!-- Countdown Section - Single Row -->
+          <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding: 10px 0;">
+            <div style="text-align: center;">
+              <div style="font-size: 28px; font-weight: bold; color: #d6002f; padding: 5px 10px; border: 1px solid #d6002f; border-radius: 8px; margin-bottom: 3px; min-width: 60px;" id="days">00</div>
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">Ngày</div>
+            </div>
+            <div style="display: flex; align-items: center; color: #d6002f; font-weight: bold;">:</div>
+            <div style="text-align: center;">
+              <div style="font-size: 28px; font-weight: bold; color: #d6002f; padding: 5px 10px; border: 1px solid #d6002f; border-radius: 8px; margin-bottom: 3px; min-width: 60px;" id="hours">00</div>
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">Giờ</div>
+            </div>
+            <div style="display: flex; align-items: center; color: #d6002f; font-weight: bold;">:</div>
+            <div style="text-align: center;">
+              <div style="font-size: 28px; font-weight: bold; color: #d6002f; padding: 5px 10px; border: 1px solid #d6002f; border-radius: 8px; margin-bottom: 3px; min-width: 60px;" id="minutes">00</div>
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">Phút</div>
+            </div>
+            <div style="display: flex; align-items: center; color: #d6002f; font-weight: bold;">:</div>
+            <div style="text-align: center;">
+              <div style="font-size: 28px; font-weight: bold; color: #d6002f; padding: 5px 10px; border: 1px solid #d6002f; border-radius: 8px; margin-bottom: 3px; min-width: 60px;" id="seconds">00</div>
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">Giây</div>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="divider">
         <hr class="divider">
         <h2>🎁 Chuyển khoản mừng cưới 🎁</h2>
         <div style="margin-bottom:10px; font-size:14px; text-align:center;">Quét mã QR bên dưới để chuyển khoản nhanh:</div>
@@ -592,6 +647,8 @@ body {
         </div>
         <hr class="divider">
         <h2>📸 Album Ảnh Cưới 📸</h2>
+        <!-- Countdown Section -->
+
         <div class="photo-gallery">
           <div class="gallery-container">
             <img src="couple.jpg" alt="Ảnh cưới chính" class="gallery-item main-photo" onclick="openImageModal('couple.jpg')" style="cursor: zoom-in;">
@@ -604,25 +661,98 @@ body {
             <img src="images/z7133794099517_a9342ac064340bf6e4afa7a854527e6d.jpg" alt="Ảnh cưới 7" class="gallery-item" onclick="openImageModal('images/z7133794099517_a9342ac064340bf6e4afa7a854527e6d.jpg')" style="cursor: zoom-in;">
             <img src="images/z7133794208282_e1a6bc5ca75c03c7d815db263901b6cf.jpg" alt="Ảnh cưới 8" class="gallery-item" onclick="openImageModal('images/z7133794208282_e1a6bc5ca75c03c7d815db263901b6cf.jpg')" style="cursor: zoom-in;">
             <img src="images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg" alt="Ảnh cưới 9" class="gallery-item" onclick="openImageModal('images/z7133794360965_1028168c1f5394907d24dcb48a496e84.jpg')" style="cursor: zoom-in;">
-            <img src="images/z7133794492327_0c5ff35ba0e62ed46291e1535fb2407f.jpg" alt="Ảnh cưới 10" class="gallery-item" onclick="openImageModal('images/z7133794492327_0c5ff35ba0e62ed46291e1535fb2407f.jpg')" style="cursor: zoom-in;">
-            <img src="images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg" alt="Ảnh cưới 11" class="gallery-item" onclick="openImageModal('images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg')" style="cursor: zoom-in;">
+            <img src="images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg" alt="Ảnh cưới 10" class="gallery-item" onclick="openImageModal('images/z7133794572543_71196cfdcbb57881cb52205748ce08d3.jpg')" style="cursor: zoom-in;">
             <img src="images/z7133801548978_cd5e4ef3257ad85b6599e55ea304c1e5.jpg" alt="Ảnh cưới 12" class="gallery-item" onclick="openImageModal('images/z7133801548978_cd5e4ef3257ad85b6599e55ea304c1e5.jpg')" style="cursor: zoom-in;">
             <img src="images/z7133801650064_5c596063a1083651afcfa874a84ad7a2.jpg" alt="Ảnh cưới 13" class="gallery-item" onclick="openImageModal('images/z7133801650064_5c596063a1083651afcfa874a84ad7a2.jpg')" style="cursor: zoom-in;">
           </div>
         </div>
-        <div class="facebook-info">
-          📘 <b>Facebook:</b> hoàng đông
+        <!-- Lời Mời -->
+        <div style="background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,248,250,0.9)); 
+                   padding: 25px; 
+                   margin: 30px -25px -25px -25px;
+                   border-radius: 15px;
+                   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                   border-top: 1px solid rgba(255,255,255,0.8);
+                   position: relative;
+                   overflow: hidden;">
+          <div style="position: absolute; 
+                     top: 10px; 
+                     right: 10px; 
+                     font-size: 60px; 
+                     opacity: 0.1;
+                     color: #d6002f;">❝</div>
+          
+          <h2 style="text-align: center; 
+                    color: #b21c5c; 
+                    margin-top: 0;
+                    margin-bottom: 20px;
+                    font-size: 22px;
+                    position: relative;
+                    z-index: 1;">
+            LỜI MỜI
+          </h2>
+          
+          <div style="text-align: center; 
+                    line-height: 1.8;
+                    color: #4a4a4a;
+                    position: relative;
+                    z-index: 1;">
+            <p>Kính mời Anh/Chị và gia đình đến dự bữa tiệc mừng hạnh phúc của chúng tôi.</p>
+            <p>Chúng tôi rất hân hạnh được đón tiếp Anh/Chị trong ngày trọng đại này.</p>
+            <p>Mong được gặp Anh/Chị vào lúc <b>16h00 ngày 24/11/2025 (05/10 ÂL)</b></p>
+            
+            <div style="margin: 25px 0 15px;">
+              <div style="width: 100px; 
+                        height: 1px; 
+                        background: #d6002f; 
+                        margin: 0 auto 10px;
+                        opacity: 0.5;"></div>
+              <div style="font-style: italic;">Trân trọng,</div>
+              <div style="font-family: 'Great Vibes', cursive; 
+                           font-size: 28px; 
+                           color: #b21c5c;
+                           margin-top: 5px;">
+                Văn Đông & Hà Thu
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="position: relative; margin-top: 15px;">
+        
+        <div style="position: relative; margin-top: 30px;">
           <div style="position: absolute; left: 0; bottom: 0; font-size: 30px; opacity: 0.7; color: #d6002f;">🐉</div>
           <div style="position: absolute; right: 0; bottom: 0; font-size: 30px; opacity: 0.7; color: #d6002f;">🦅</div>
           <div style="height: 40px;"></div>
+        </div>
+        
+        <div class="facebook-info" style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+          📘 <b>Facebook:</b> hoàng đông
         </div>
       </div>
     </div>
   </div>
 </div>
 <script>
+// Countdown Timer
+function updateCountdown() {
+  const weddingDate = new Date('November 24, 2025 08:00:00').getTime();
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById('days').textContent = days.toString().padStart(2, '0');
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
+
 async function sendToTelegram(name) {
   try {
     await fetch('/api/notify-telegram', {
