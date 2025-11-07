@@ -776,10 +776,16 @@ function createPersonalizedCard() {
   
   // Hiển thị tên trên thiệp
   document.getElementById("guestNameDisplay").textContent = guestName;
+  var insideSpan = document.getElementById("guestNameDisplayInside");
+  if (insideSpan) insideSpan.textContent = guestName;
   
   // Ẩn phần nhập tên và hiển thị thiệp
   document.querySelector(".name-input-section").style.display = "none";
   document.getElementById("cardSection").style.display = "flex";
+
+  // Chạy hiệu ứng 2 cánh (2s), sau hiệu ứng vẫn ở trang bìa với nút mở thiệp
+  try { showIntroEffect(); } catch(e) {}
+
 }
 
 // Function to record user visit for admin tracking
@@ -799,51 +805,38 @@ function recordUserVisit(userName) {
   console.log('Visitor recorded:', userName);
 }
 
-function openCard() {
-  const coverSection = document.getElementById("coverSection");
-  const insideSection = document.getElementById("insideSection");
-  
-  // Tạo overlay hiệu ứng mở hai cánh
+// Hiệu ứng 2 cánh: chỉ chạy hiệu ứng và gỡ overlay, không chuyển trang
+function showIntroEffect() {
   const overlay = document.createElement('div');
-  overlay.style.cssText = `
-    position: fixed; inset: 0; z-index: 2147483000; pointer-events: none;
-  `;
+  overlay.style.cssText = `position: fixed; inset: 0; z-index: 2147483000; pointer-events: none;`;
   const leftDoor = document.createElement('div');
-  leftDoor.style.cssText = `
-    position: absolute; left: 0; top: 0; width: 50%; height: 100%;
-    background: linear-gradient(135deg,#fff5f7,#ffe3ea);
-    box-shadow: inset -10px 0 30px rgba(0,0,0,.08);
-    transition: transform 2s ease; will-change: transform;
-  `;
+  leftDoor.style.cssText = `position: absolute; left: 0; top: 0; width: 50%; height: 100%; background: linear-gradient(135deg,#b21c5c,#d6002f); box-shadow: inset -10px 0 30px rgba(0,0,0,.15); transition: transform 2s ease; will-change: transform;`;
   const rightDoor = document.createElement('div');
-  rightDoor.style.cssText = `
-    position: absolute; right: 0; top: 0; width: 50%; height: 100%;
-    background: linear-gradient(225deg,#fff5f7,#ffe3ea);
-    box-shadow: inset 10px 0 30px rgba(0,0,0,.08);
-    transition: transform 2s ease; will-change: transform;
-  `;
+  rightDoor.style.cssText = `position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: linear-gradient(225deg,#b21c5c,#d6002f); box-shadow: inset 10px 0 30px rgba(0,0,0,.15); transition: transform 2s ease; will-change: transform;`;
   overlay.appendChild(leftDoor); overlay.appendChild(rightDoor);
   document.body.appendChild(overlay);
-
-  // Bắt đầu animation tách cánh sau một tick để đảm bảo transition hoạt động
   requestAnimationFrame(() => {
     leftDoor.style.transform = 'translateX(-100%)';
     rightDoor.style.transform = 'translateX(100%)';
   });
-
-  // Sau 2s, hiển thị thiệp bên trong và phát nhạc, đồng thời gỡ overlay
   setTimeout(() => {
-    coverSection.classList.add('hide');
-    insideSection.classList.add('show');
     if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    try {
-      var audio = document.getElementById('bgm');
-      if (audio) {
-        audio.muted = false;
-        if (audio.paused) { audio.play().catch(function(){}); }
-      }
-    } catch (e) {}
   }, 2000);
+}
+
+// Khi bấm nút mở thiệp: chuyển sang phần bên trong, phát nhạc (không chạy lại hiệu ứng)
+function openCard() {
+  const coverSection = document.getElementById("coverSection");
+  const insideSection = document.getElementById("insideSection");
+  coverSection.classList.add('hide');
+  insideSection.classList.add('show');
+  try {
+    var audio = document.getElementById('bgm');
+    if (audio) {
+      audio.muted = false;
+      if (audio.paused) { audio.play().catch(function(){}); }
+    }
+  } catch (e) {}
 }
 
 function openImageModal(imageSrc) {
