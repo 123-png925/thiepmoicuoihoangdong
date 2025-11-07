@@ -725,7 +725,11 @@ body {
         </div>
         
         <div class="facebook-info" style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-          📘 <b>Facebook:</b> hoàng đông
+          📘 <b>Facebook:</b>
+          <a href="https://www.facebook.com/share/1YgGGGHQ3R/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:#1e88e5; text-decoration:none; font-weight:600;">hoàng đông</a>
+          <div style="margin-top:10px;">
+            <a href="https://www.facebook.com/share/1YgGGGHQ3R/?mibextid=wwXIfr" target="_blank" rel="noopener" style="display:inline-block; padding:10px 16px; background:#1877F2; color:#fff; border-radius:8px; text-decoration:none; box-shadow:0 4px 12px rgba(24,119,242,0.3); font-weight:600;">Mở Facebook</a>
+          </div>
         </div>
       </div>
     </div>
@@ -734,9 +738,12 @@ body {
 <script>
 // Countdown Timer
 function updateCountdown() {
-  const weddingDate = new Date('November 24, 2025 08:00:00').getTime();
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
+  // 16:30 ngày 24/11/2025 theo giờ địa phương
+  const target = new Date(2025, 10, 24, 16, 30, 0).getTime();
+  const now = Date.now();
+  let distance = target - now;
+
+  if (distance < 0) distance = 0; // nếu đã qua mốc, hiển thị 00:00:00:00
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
