@@ -570,7 +570,7 @@ body {
           NHÀ TRAI <b>BÙI VĂN ĐÍCH</b> & <b>BẠCH THỊ HÒA</b><br>
           NHÀ GÁI <b>BÙI THỊ NGHĨA</b>
         </div>
-        <div>Kính mời: <span id="guestNameDisplay">Quý khách</span><br>
+        <div>Kính mời: <span id="guestNameDisplayInside">Quý khách</span><br>
           Đến dự lễ thành hôn của chúng tôi:</div>
         <div class="highlight">VĂN ĐÔNG & HÀ THU</div>
          <p>lễ thành hôn của chúng tôi sẽ được tổ chức vào:</p>
@@ -803,17 +803,47 @@ function openCard() {
   const coverSection = document.getElementById("coverSection");
   const insideSection = document.getElementById("insideSection");
   
-  coverSection.classList.add("hide");
-  insideSection.classList.add("show");
-  // Bật nhạc sau khi người dùng mở thiệp (đã có tương tác)
-  try {
-    var audio = document.getElementById('bgm');
-    if (audio) {
-      audio.muted = false;
-      audio.volume = 1.0;
-      if (audio.paused) { audio.play().catch(function(){}); }
-    }
-  } catch (e) {}
+  // Tạo overlay hiệu ứng mở hai cánh
+  const overlay = document.createElement('div');
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 2147483000; pointer-events: none;
+  `;
+  const leftDoor = document.createElement('div');
+  leftDoor.style.cssText = `
+    position: absolute; left: 0; top: 0; width: 50%; height: 100%;
+    background: linear-gradient(135deg,#fff5f7,#ffe3ea);
+    box-shadow: inset -10px 0 30px rgba(0,0,0,.08);
+    transition: transform 2s ease; will-change: transform;
+  `;
+  const rightDoor = document.createElement('div');
+  rightDoor.style.cssText = `
+    position: absolute; right: 0; top: 0; width: 50%; height: 100%;
+    background: linear-gradient(225deg,#fff5f7,#ffe3ea);
+    box-shadow: inset 10px 0 30px rgba(0,0,0,.08);
+    transition: transform 2s ease; will-change: transform;
+  `;
+  overlay.appendChild(leftDoor); overlay.appendChild(rightDoor);
+  document.body.appendChild(overlay);
+
+  // Bắt đầu animation tách cánh sau một tick để đảm bảo transition hoạt động
+  requestAnimationFrame(() => {
+    leftDoor.style.transform = 'translateX(-100%)';
+    rightDoor.style.transform = 'translateX(100%)';
+  });
+
+  // Sau 2s, hiển thị thiệp bên trong và phát nhạc, đồng thời gỡ overlay
+  setTimeout(() => {
+    coverSection.classList.add('hide');
+    insideSection.classList.add('show');
+    if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    try {
+      var audio = document.getElementById('bgm');
+      if (audio) {
+        audio.muted = false;
+        if (audio.paused) { audio.play().catch(function(){}); }
+      }
+    } catch (e) {}
+  }, 2000);
 }
 
 function openImageModal(imageSrc) {
