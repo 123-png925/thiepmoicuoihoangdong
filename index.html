@@ -805,6 +805,15 @@ function openCard() {
   
   coverSection.classList.add("hide");
   insideSection.classList.add("show");
+  // Bật nhạc sau khi người dùng mở thiệp (đã có tương tác)
+  try {
+    var audio = document.getElementById('bgm');
+    if (audio) {
+      audio.muted = false;
+      audio.volume = 1.0;
+      if (audio.paused) { audio.play().catch(function(){}); }
+    }
+  } catch (e) {}
 }
 
 function openImageModal(imageSrc) {
@@ -850,6 +859,60 @@ function openImageModal(imageSrc) {
     }
   };
 }
+</script>
+<audio id="bgm" src="hoang-dong.mp3" loop preload="auto" autoplay muted playsinline></audio>
+<button id="audio-toggle" style="position: fixed; right: 16px; bottom: 16px; width: 52px; height: 52px; border-radius: 50%; border: none; background: #d6002f; color: #fff; font-size: 20px; box-shadow: 0 6px 16px rgba(214,0,47,0.35); cursor: pointer; z-index: 2147483647; display: flex; align-items: center; justify-content: center; pointer-events: auto; touch-action: manipulation;" title="Bật/Tạm dừng nhạc">
+  ⏸️
+</button>
+<script>
+  (function () {
+    var audio = document.getElementById('bgm');
+    var btn = document.getElementById('audio-toggle');
+    function updateBtn() {
+      btn.textContent = audio && !audio.paused ? '⏸️' : '🔊';
+    }
+    function tryAutoplay() {
+      if (!audio) return;
+      // Autoplay an toàn: phát ở trạng thái muted để tránh bị chặn
+      audio.muted = true;
+      var p = audio.play();
+      if (p && typeof p.then === 'function') {
+        p.then(function () { updateBtn(); }).catch(function () { updateBtn(); });
+      } else {
+        updateBtn();
+      }
+    }
+    document.addEventListener('DOMContentLoaded', tryAutoplay);
+    // Fallback: phát nhạc ở lần tương tác đầu tiên
+    function resumeOnFirstInteraction() {
+      if (!audio) return;
+      audio.muted = false;
+      if (audio.paused) { audio.play().catch(function(){}); }
+      updateBtn();
+      window.removeEventListener('click', resumeOnFirstInteraction, { capture: true });
+      window.removeEventListener('touchstart', resumeOnFirstInteraction, { capture: true });
+    }
+    window.addEventListener('click', resumeOnFirstInteraction, { capture: true, once: true });
+    window.addEventListener('touchstart', resumeOnFirstInteraction, { capture: true, once: true });
+    btn.addEventListener('click', function () {
+      if (!audio) return;
+      audio.muted = false;
+      if (audio.paused) {
+        var p = audio.play();
+        if (p && typeof p.then === 'function') { p.then(updateBtn).catch(updateBtn); }
+      } else {
+        audio.pause();
+        updateBtn();
+      }
+    });
+    // Phím tắt: nhấn M để bật/tạm dừng nhạc
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'm' || e.key === 'M') {
+        btn.click();
+      }
+    });
+    updateBtn();
+  })();
 </script>
 </body>
 </html>
